@@ -43,11 +43,6 @@
   </script>
 
   <style>
-    /* Hide native cursor for pencil custom cursor */
-    body, a, button {
-      cursor: none !important;
-    }
-
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
@@ -59,20 +54,6 @@
       background: #333;
       border-radius: 3px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-
-    /* Noise Texture Overlay */
-    .bg-noise {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-    }
-
-    /* Parallax Elements */
-    .parallax-bg {
-      transition: transform 0.1s ease-out;
-      will-change: transform;
-    }
 
     /* Monochromatic Image Styling */
     .grayscale-img {
@@ -83,7 +64,6 @@
       filter: grayscale(0%) contrast(105%);
     }
 
-    /* Glowing Monochromatic Borders */
     .border-mono-glow {
       border: 1px solid rgba(255, 255, 255, 0.12);
       transition: all 0.3s ease;
@@ -92,46 +72,9 @@
       border-color: rgba(255, 255, 255, 0.35);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
     }
-
-    /* Custom Pencil Cursor */
-    #pencil-cursor {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.15s ease-out;
-    }
-
-    @keyframes rotatePencil {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .pencil-spin {
-      animation: rotatePencil 6s linear infinite;
-    }
   </style>
 </head>
 <body class="bg-mono-950 text-mono-100 font-sans antialiased overflow-x-hidden selection:bg-mono-100 selection:text-mono-950">
-
-  <!-- Custom Rotating Pencil Cursor -->
-  <div id="pencil-cursor" class="flex items-center justify-center text-mono-50">
-    <div class="pencil-spin p-2 rounded-full bg-mono-900/80 border border-mono-700 backdrop-blur-sm shadow-xl">
-      <i class="fa-solid fa-pencil text-mono-100 text-lg"></i>
-    </div>
-  </div>
-
-  <!-- Noise Overlay -->
-  <div class="fixed inset-0 bg-noise pointer-events-none z-50"></div>
-
-  <!-- Parallax Floating Background Elements -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div id="p-elem-1" class="parallax-bg absolute top-10 left-10 w-96 h-96 bg-mono-800/10 rounded-full blur-3xl"></div>
-    <div id="p-elem-2" class="parallax-bg absolute bottom-20 right-10 w-[500px] h-[500px] bg-mono-700/10 rounded-full blur-3xl"></div>
-    <div id="p-elem-3" class="parallax-bg absolute top-1/2 left-1/3 w-64 h-64 bg-mono-500/5 rounded-full blur-2xl"></div>
-  </div>
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 w-full z-40 backdrop-blur-md bg-mono-950/80 border-b border-mono-900/80 transition-all duration-300">
@@ -140,7 +83,6 @@
         Edita Galstyan
       </a>
 
-      <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest font-medium">
         <a href="#about" class="hover:text-mono-400 transition-colors">About</a>
         <a href="#skills" class="hover:text-mono-400 transition-colors">Skills</a>
@@ -149,19 +91,6 @@
           Contact
         </a>
       </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden text-mono-100 focus:outline-none p-2">
-        <i class="fa-solid fa-bars text-xl"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-mono-950 border-b border-mono-900 px-6 py-6 space-y-4 text-center tracking-widest text-sm uppercase">
-      <a href="#about" class="block py-2 hover:text-mono-400">About</a>
-      <a href="#skills" class="block py-2 hover:text-mono-400">Skills</a>
-      <a href="#projects" class="block py-2 hover:text-mono-400">Projects</a>
-      <a href="#contact" class="block py-2 border border-mono-100 text-mono-100 hover:bg-mono-100 hover:text-mono-950">Contact</a>
     </div>
   </nav>
 
@@ -198,14 +127,13 @@
         <div class="relative w-full max-w-md aspect-[3/4] p-3 border border-mono-800 bg-mono-900/40">
           <div class="w-full h-full overflow-hidden relative group">
             <img 
-              src="https://raw.githubusercontent.com/editagalstyan/Portfolio/main/profile.jpg" 
-              onerror="this.src='./profile.jpg'"
+              src="./profile.jpg.jpg" 
+              onerror="this.src='https://raw.githubusercontent.com/editagalstyan/Portfolio/main/profile.jpg.jpg'"
               alt="Edita Galstyan" 
               class="w-full h-full object-cover grayscale-img transform group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-mono-950 via-transparent to-transparent opacity-60"></div>
           </div>
-          <!-- Corner Frames -->
           <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-mono-100"></div>
           <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-mono-100"></div>
         </div>
@@ -214,281 +142,60 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-24 px-6 border-t border-mono-900 bg-mono-900/20 relative z-10">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-5 space-y-4">
-        <h2 class="text-xs uppercase tracking-widest text-mono-400 font-semibold">About Me</h2>
-        <p class="text-3xl sm:text-4xl font-serif text-mono-100 font-semibold leading-snug">
-          "Minimalist aesthetics combined with functional visual communication."
-        </p>
-      </div>
-      <div class="md:col-span-7 space-y-6 text-mono-300 font-light leading-relaxed">
-        <p>
-          I am Edita Galstyan, a Graphic Designer specializing in brand identity, print design, vector graphics, and visual layouts.
-        </p>
-        <p>
-          My approach relies on clean grid structures, stark contrasts, and refined typography to communicate concepts powerfully and clearly.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="py-24 px-6 border-t border-mono-900 relative z-10">
-    <div class="max-w-7xl mx-auto space-y-16">
-      
-      <div class="text-center max-w-2xl mx-auto space-y-3">
-        <h2 class="text-xs uppercase tracking-widest text-mono-400 font-semibold">Specialization</h2>
-        <p class="text-3xl sm:text-4xl font-serif text-mono-100 font-bold">Graphic Design Skills</p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        
-        <div class="p-6 border border-mono-900 bg-mono-900/30 border-mono-glow space-y-4">
-          <i class="fa-solid fa-pen-nib text-2xl text-mono-100"></i>
-          <h3 class="font-serif text-lg text-mono-100 font-semibold">Adobe Illustrator</h3>
-          <p class="text-xs text-mono-400">Vector artwork, custom icons, brand assets, logo creation.</p>
-        </div>
-
-        <div class="p-6 border border-mono-900 bg-mono-900/30 border-mono-glow space-y-4">
-          <i class="fa-solid fa-image text-2xl text-mono-100"></i>
-          <h3 class="font-serif text-lg text-mono-100 font-semibold">Adobe Photoshop</h3>
-          <p class="text-xs text-mono-400">Image manipulation, editorial mockups, high-contrast photo editing.</p>
-        </div>
-
-        <div class="p-6 border border-mono-900 bg-mono-900/30 border-mono-glow space-y-4">
-          <i class="fa-solid fa-layer-group text-2xl text-mono-100"></i>
-          <h3 class="font-serif text-lg text-mono-100 font-semibold">Figma</h3>
-          <p class="text-xs text-mono-400">Layout prototyping, digital visual assets, grid compositions.</p>
-        </div>
-
-        <div class="p-6 border border-mono-900 bg-mono-900/30 border-mono-glow space-y-4">
-          <i class="fa-solid fa-font text-2xl text-mono-100"></i>
-          <h3 class="font-serif text-lg text-mono-100 font-semibold">Typography</h3>
-          <p class="text-xs text-mono-400">Font pairing, hierarchy, editorial typography, custom lettering.</p>
-        </div>
-
-        <div class="p-6 border border-mono-900 bg-mono-900/30 border-mono-glow space-y-4">
-          <i class="fa-solid fa-copyright text-2xl text-mono-100"></i>
-          <h3 class="font-serif text-lg text-mono-100 font-semibold">Brand Identity</h3>
-          <p class="text-xs text-mono-400">Visual style guides, brand identity systems, corporate stationery.</p>
-        </div>
-
-        <div class="p-6 border border-mono-900 bg-mono-900/30 border-mono-glow space-y-4">
-          <i class="fa-solid fa-film text-2xl text-mono-100"></i>
-          <h3 class="font-serif text-lg text-mono-100 font-semibold">Motion Design</h3>
-          <p class="text-xs text-mono-400">Animated vector assets, kinetic graphics, social media animations.</p>
-        </div>
-
-        <div class="p-6 border border-mono-900 bg-mono-900/30 border-mono-glow space-y-4">
-          <i class="fa-solid fa-newspaper text-2xl text-mono-100"></i>
-          <h3 class="font-serif text-lg text-mono-100 font-semibold">Print & Layout</h3>
-          <p class="text-xs text-mono-400">Magazine spreads, editorial publications, poster layout design.</p>
-        </div>
-
-        <div class="p-6 border border-mono-900 bg-mono-900/30 border-mono-glow space-y-4">
-          <i class="fa-solid fa-palette text-2xl text-mono-100"></i>
-          <h3 class="font-serif text-lg text-mono-100 font-semibold">Vector Illustration</h3>
-          <p class="text-xs text-mono-400">Custom sticker sets, infographic vector graphics, digital drawings.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Behance Portfolio Showcase -->
+  <!-- Projects Section -->
   <section id="projects" class="py-24 px-6 border-t border-mono-900 bg-mono-900/10 relative z-10">
     <div class="max-w-7xl mx-auto space-y-16">
-      
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-mono-900 pb-8">
         <div>
           <h2 class="text-xs uppercase tracking-widest text-mono-400 font-semibold mb-2">Portfolio</h2>
           <p class="text-3xl sm:text-5xl font-serif text-mono-100 font-bold">Featured Projects</p>
         </div>
-        <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-widest text-mono-300 hover:text-mono-50 flex items-center space-x-2 transition-colors">
-          <span>View All Behance Projects</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
       </div>
 
-      <!-- Project Cards Grid -->
+      <!-- Projects Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        <!-- Project 1: FemStickers -->
-        <a 
-          href="https://www.behance.net/gallery/253838651/FemStickers/modules/1476039109" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="group border border-mono-900 bg-mono-950 overflow-hidden border-mono-glow flex flex-col justify-between block transition-all duration-500"
-        >
+        <!-- Project 1 -->
+        <a href="https://www.behance.net/gallery/253838651/FemStickers/modules/1476039109" target="_blank" class="group border border-mono-900 bg-mono-950 overflow-hidden border-mono-glow flex flex-col justify-between block transition-all duration-500">
           <div class="aspect-[4/3] overflow-hidden bg-mono-900 relative">
-            <img 
-              src="https://raw.githubusercontent.com/editagalstyan/Portfolio/main/stickers.jpg" 
-              onerror="this.src='./stickers.jpg'"
-              alt="FemStickers" 
-              class="w-full h-full object-cover grayscale-img group-hover:scale-105 transition-transform duration-700"
-            />
-            <div class="absolute top-4 left-4 bg-mono-950/80 px-3 py-1 border border-mono-800 text-[10px] uppercase tracking-widest text-mono-300">
-              Vector / Stickers
-            </div>
+            <img src="./stickers.jpg.png" onerror="this.src='https://raw.githubusercontent.com/editagalstyan/Portfolio/main/stickers.jpg.png'" alt="FemStickers" class="w-full h-full object-cover grayscale-img group-hover:scale-105 transition-transform duration-700" />
           </div>
-
-          <div class="p-6 space-y-4">
-            <h3 class="text-xl font-serif font-bold text-mono-100 group-hover:text-mono-300 transition-colors">
-              FemStickers
-            </h3>
-            <p class="text-xs text-mono-400 font-light leading-relaxed">
-              Custom vector illustration sticker series highlighting feminine creative themes through minimal lines and bold contrast.
-            </p>
-            <div class="pt-2 flex items-center justify-between border-t border-mono-900/80">
-              <span class="text-[10px] uppercase tracking-widest text-mono-500">Open in Behance</span>
-              <span class="inline-flex items-center space-x-2 text-xs uppercase tracking-wider text-mono-100 group-hover:text-mono-400 font-semibold transition-colors">
-                <span>View</span>
-                <i class="fa-brands fa-behance text-sm"></i>
-              </span>
-            </div>
+          <div class="p-6 space-y-2">
+            <h3 class="text-xl font-serif font-bold text-mono-100">FemStickers</h3>
+            <p class="text-xs text-mono-400">Vector artwork sticker project.</p>
           </div>
         </a>
 
-        <!-- Project 2: Magazine -->
-        <a 
-          href="https://www.behance.net/gallery/254840533/Magazine/modules/1483387645" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="group border border-mono-900 bg-mono-950 overflow-hidden border-mono-glow flex flex-col justify-between block transition-all duration-500"
-        >
+        <!-- Project 2 -->
+        <a href="https://www.behance.net/gallery/254840533/Magazine/modules/1483387645" target="_blank" class="group border border-mono-900 bg-mono-950 overflow-hidden border-mono-glow flex flex-col justify-between block transition-all duration-500">
           <div class="aspect-[4/3] overflow-hidden bg-mono-900 relative">
-            <img 
-              src="https://raw.githubusercontent.com/editagalstyan/Portfolio/main/magazine.jpg" 
-              onerror="this.src='./magazine.jpg'"
-              alt="Magazine" 
-              class="w-full h-full object-cover grayscale-img group-hover:scale-105 transition-transform duration-700"
-            />
-            <div class="absolute top-4 left-4 bg-mono-950/80 px-3 py-1 border border-mono-800 text-[10px] uppercase tracking-widest text-mono-300">
-              Print / Editorial
-            </div>
+            <img src="./magazine.jpg.png" onerror="this.src='https://raw.githubusercontent.com/editagalstyan/Portfolio/main/magazine.jpg.png'" alt="Magazine" class="w-full h-full object-cover grayscale-img group-hover:scale-105 transition-transform duration-700" />
           </div>
-
-          <div class="p-6 space-y-4">
-            <h3 class="text-xl font-serif font-bold text-mono-100 group-hover:text-mono-300 transition-colors">
-              Magazine
-            </h3>
-            <p class="text-xs text-mono-400 font-light leading-relaxed">
-              Editorial publication layout featuring high-contrast cover designs, clean typography grids, and creative print composition.
-            </p>
-            <div class="pt-2 flex items-center justify-between border-t border-mono-900/80">
-              <span class="text-[10px] uppercase tracking-widest text-mono-500">Open in Behance</span>
-              <span class="inline-flex items-center space-x-2 text-xs uppercase tracking-wider text-mono-100 group-hover:text-mono-400 font-semibold transition-colors">
-                <span>View</span>
-                <i class="fa-brands fa-behance text-sm"></i>
-              </span>
-            </div>
+          <div class="p-6 space-y-2">
+            <h3 class="text-xl font-serif font-bold text-mono-100">Magazine Layout</h3>
+            <p class="text-xs text-mono-400">Editorial magazine print design.</p>
           </div>
         </a>
 
-        <!-- Project 3: Infographic project -->
-        <a 
-          href="https://www.behance.net/gallery/254650813/Infographic-project/modules/1481963875" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="group border border-mono-900 bg-mono-950 overflow-hidden border-mono-glow flex flex-col justify-between block transition-all duration-500"
-        >
+        <!-- Project 3 -->
+        <a href="https://www.behance.net/gallery/254650813/Infographic-project/modules/1481963875" target="_blank" class="group border border-mono-900 bg-mono-950 overflow-hidden border-mono-glow flex flex-col justify-between block transition-all duration-500">
           <div class="aspect-[4/3] overflow-hidden bg-mono-900 relative">
-            <img 
-              src="https://raw.githubusercontent.com/editagalstyan/Portfolio/main/infographic.jpg" 
-              onerror="this.src='./infographic.jpg'"
-              alt="Infographic project" 
-              class="w-full h-full object-cover grayscale-img group-hover:scale-105 transition-transform duration-700"
-            />
-            <div class="absolute top-4 left-4 bg-mono-950/80 px-3 py-1 border border-mono-800 text-[10px] uppercase tracking-widest text-mono-300">
-              Information Design
-            </div>
+            <img src="./infographic.jpg.png" onerror="this.src='https://raw.githubusercontent.com/editagalstyan/Portfolio/main/infographic.jpg.png'" alt="Infographic" class="w-full h-full object-cover grayscale-img group-hover:scale-105 transition-transform duration-700" />
           </div>
-
-          <div class="p-6 space-y-4">
-            <h3 class="text-xl font-serif font-bold text-mono-100 group-hover:text-mono-300 transition-colors">
-              Infographic Project
-            </h3>
-            <p class="text-xs text-mono-400 font-light leading-relaxed">
-              Structured visual data representation combining literary analysis of Romeo & Juliet with vintage paper aesthetics and clear graphics.
-            </p>
-            <div class="pt-2 flex items-center justify-between border-t border-mono-900/80">
-              <span class="text-[10px] uppercase tracking-widest text-mono-500">Open in Behance</span>
-              <span class="inline-flex items-center space-x-2 text-xs uppercase tracking-wider text-mono-100 group-hover:text-mono-400 font-semibold transition-colors">
-                <span>View</span>
-                <i class="fa-brands fa-behance text-sm"></i>
-              </span>
-            </div>
+          <div class="p-6 space-y-2">
+            <h3 class="text-xl font-serif font-bold text-mono-100">Infographic Project</h3>
+            <p class="text-xs text-mono-400">Information & visual data design.</p>
           </div>
         </a>
 
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-24 px-6 border-t border-mono-900 relative z-10">
-    <div class="max-w-4xl mx-auto text-center space-y-12">
-      <div class="space-y-4">
-        <h2 class="text-xs uppercase tracking-widest text-mono-400 font-semibold">Get In Touch</h2>
-        <p class="text-4xl sm:text-6xl font-serif text-mono-100 font-bold">Let's Create Together</p>
-        <p class="text-mono-400 font-light max-w-lg mx-auto text-sm">
-          Available for freelance graphic design projects, branding identities, editorial layouts, and creative design commissions.
-        </p>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-6 items-center pt-4">
-        <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-mono-100 text-mono-950 font-bold text-xs uppercase tracking-widest hover:bg-mono-300 transition-all">
-          <i class="fa-brands fa-behance mr-2"></i> Behance Portfolio
-        </a>
-        <a href="mailto:contact@editagalstyan.com" class="px-8 py-4 border border-mono-800 text-mono-200 font-bold text-xs uppercase tracking-widest hover:border-mono-100 hover:text-mono-50 transition-all">
-          Send Email
-        </a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 border-t border-mono-900 text-center text-mono-500 text-xs uppercase tracking-widest relative z-10">
+  <footer class="py-8 border-t border-mono-900 text-center text-mono-500 text-xs uppercase tracking-widest">
     <p>&copy; 2026 Edita Galstyan. All Rights Reserved.</p>
   </footer>
 
-  <!-- Scripts: Custom Pencil Cursor, Parallax Effect & Mobile Nav -->
-  <script>
-    // Custom Rotating Pencil Cursor Position Tracking
-    const pencilCursor = document.getElementById('pencil-cursor');
-    document.addEventListener('mousemove', (e) => {
-      if (pencilCursor) {
-        pencilCursor.style.left = `${e.clientX}px`;
-        pencilCursor.style.top = `${e.clientY}px`;
-      }
-    });
-
-    // Background Parallax Mouse Effect
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 40;
-      const y = (e.clientY / window.innerHeight - 0.5) * 40;
-
-      const p1 = document.getElementById('p-elem-1');
-      const p2 = document.getElementById('p-elem-2');
-      const p3 = document.getElementById('p-elem-3');
-
-      if (p1) p1.style.transform = `translate(${x * 1.5}px, ${y * 1.5}px)`;
-      if (p2) p2.style.transform = `translate(${-x * 1.2}px, ${-y * 1.2}px)`;
-      if (p3) p3.style.transform = `translate(${x * 0.8}px, ${-y * 0.8}px)`;
-    });
-
-    // Mobile Menu Toggle
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-
-    if (btn && menu) {
-      btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-      });
-    }
-  </script>
 </body>
 </html>
